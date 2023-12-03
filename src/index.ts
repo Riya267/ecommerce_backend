@@ -5,19 +5,8 @@ import cors from 'cors'
 import morganLogger from './config/morgan'
 import logger from './config/winston'
 import 'dotenv/config'
-
-// Dummy typedefs and resolvers
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello, world!',
-  },
-}
+import typeDefs from './schema'
+import resolvers from './resolvers'
 
 async function startApolloServer() {
   const app = express()
