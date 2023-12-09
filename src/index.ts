@@ -34,7 +34,7 @@ async function startApolloServer() {
   }
 
   app.use(cors(corsOptions))
-
+  
   server.applyMiddleware({ app, cors: corsOptions, path: '/graphql' })
 
   await new Promise<void>((resolve) =>
