@@ -1,0 +1,26 @@
+type Product {
+  id: ID
+  ProductId: Int
+  Gender: String
+  Category: String
+  SubCategory: String
+  ProductType: String
+  Colour: String
+  Usage: String
+  ProductTitle: String
+  ImageURL: String
+  UnitPrice: Float
+}
+
+input ProductInput {
+  ProductId: Int
+  Gender: String
+  Category: String
+  SubCategory: String
+  ProductType: String
+  Colour: String
+  Usage: String
+  ProductTitle: String
+  ImageURL: String
+  UnitPrice: Float
+}

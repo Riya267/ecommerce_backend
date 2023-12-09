@@ -18,6 +18,22 @@ async function startApolloServer() {
       return { context: req }
     },
     cache: 'bounded',
+    formatError: (error) => {
+      // Log the error with Winston logger
+      logger.error('Apollo Server Error:', error.name);
+
+      // Return a formatted error for the client
+      return {
+        message: error.message,
+        path: error.path,
+        extensions: {
+          code: error.extensions?.code || 'INTERNAL_SERVER_ERROR',
+          exception: {
+            stacktrace: error.extensions?.exception?.stacktrace,
+          },
+        },
+      };
+    },
   })
 
   await server.start()
@@ -36,6 +52,7 @@ async function startApolloServer() {
   app.use(cors(corsOptions))
   
   server.applyMiddleware({ app, cors: corsOptions, path: '/graphql' })
+
 
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: process.env.PORT }, () => resolve()),

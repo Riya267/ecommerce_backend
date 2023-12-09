@@ -1,7 +1,10 @@
 type Query {
-    hello: String
+    getProduct(id: ID!): Product
+    getAllProducts(page: Int, limit: Int): [Product]!
 }
 
 type Mutation {
-    helloPost: String
+    createProduct(productInfo: ProductInput): Product
+    updateProduct(id: ID!, productInfo: ProductInput): Product
+    deleteProduct(id: ID!): Product
 }
