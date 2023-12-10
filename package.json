@@ -6,8 +6,8 @@
   "scripts": {
     "start": "NODE_OPTIONS='--loader ts-node/esm' node src/index.ts",
     "build": "tsc",
-    "lint": "eslint  --fix",
-    "format": "prettier --write .",
+    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss}'",
     "prepare": "husky install",
     "postinstall": "prisma generate"
   },
