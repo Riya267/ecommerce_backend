@@ -1,16 +1,1 @@
-# dependencies
-/node_modules
-
-# testing
-/coverage
-
-# production
-/dist
-
-# misc
-.env
-
-pnpm-debug.log*
-pnpm-error.log*
-node_modules
-.vercel
+*

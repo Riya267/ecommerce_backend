@@ -7,15 +7,15 @@
     "start": "NODE_OPTIONS='--loader ts-node/esm' node src/index.ts",
     "build": "tsc",
     "lint": "eslint --fix 'src/**/*.{js,ts,json}'",
-    "format": "prettier --write 'src/**/*.{js,ts,json,css,scss}'",
+    "format": "prettier --write 'src/**/*.{js,ts,json}'",
     "prepare": "husky install",
     "postinstall": "prisma generate"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "*.{js,ts,json,md}": [
       "pnpm run lint",
       "pnpm run format",
-      "git add"
+      "git add ."
     ]
   },
   "type": "module",
