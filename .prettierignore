@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# misc
+.env
+
+pnpm-debug.log*
+pnpm-error.log*
+
+# root configs
+tsconfig.json

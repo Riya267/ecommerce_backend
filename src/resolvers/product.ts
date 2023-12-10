@@ -1,19 +1,6 @@
 import logger from '../config/winston'
 import prisma from '../prismaClient'
 
-type ProductInfo = {
-  ProductId: number
-  Gender: string
-  Category: string
-  SubCategory: string
-  ProductType: string
-  Colour: string
-  Usage: string
-  ProductTitle: string
-  ImageURL: string
-  UnitPrice: GLfloat
-}
-
 export const getProduct = async (args: { id: string }) => {
   try {
     const response = await prisma.products.findUnique({
@@ -108,3 +95,4 @@ export const deleteProduct = async (args: { id: string }) => {
     throw error
   }
 }
+

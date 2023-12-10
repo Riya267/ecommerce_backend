@@ -1,8 +1,9 @@
 type Query {
     getProduct(id: ID!): Product
-    getAllProducts(page: Int, limit: Int): [Product]!
+    getAllProducts(page: Int, limit: Int): [Product]
     getCategories(page: Int, limit: Int): [CategoriesOutput]
     getFilters(page: Int, limit: Int): [FiltersOutput]
+    getFavProducts(page: Int, limit: Int): [Product]
 }
 
 type Mutation {
@@ -15,4 +16,6 @@ type Mutation {
     createFilter(filterInfo: FiltersInput): FiltersOutput
     updateFilter(id: ID!, filterInfo: FiltersInput): FiltersOutput
     deleteFilter(id: ID!): Boolean
+    createFavProduct(favProductInfo: ProductInput): Product
+    deleteFavProduct(id: ID!): Boolean
 }
