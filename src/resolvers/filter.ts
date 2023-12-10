@@ -18,7 +18,7 @@ export const getFilters = async (args: { page: number; limit: number }) => {
   }
 }
 
-export const createFilters = async (args: {
+export const createFilter = async (args: {
   filterInfo: {
     Title: string
     Values: string
@@ -38,7 +38,7 @@ export const createFilters = async (args: {
   }
 }
 
-export const updatefilter = async (args: {
+export const updateFilter = async (args: {
   id: string
   filterInfo: {
     Title: string
@@ -66,7 +66,7 @@ export const updatefilter = async (args: {
   }
 }
 
-export const deletefilter = async (args: { id: string }) => {
+export const deleteFilter = async (args: { id: string }) => {
   try {
     const deletedfilter = await prisma.filters.delete({
       where: {

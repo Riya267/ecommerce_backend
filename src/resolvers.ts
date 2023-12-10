@@ -13,9 +13,9 @@ import {
 } from './resolvers/category'
 import {
   getFilters,
-  createFilters,
-  updatefilter,
-  deletefilter,
+  createFilter,
+  updateFilter,
+  deleteFilter,
 } from './resolvers/filter'
 
 export default {
@@ -62,16 +62,16 @@ export default {
       const category = await deleteCategory(args)
       return category
     },
-    createFilters: async (_, args) => {
-      const filter = await createFilters(args)
+    createFilter: async (_, args) => {
+      const filter = await createFilter(args)
       return filter
     },
-    updatefilter: async (_, args) => {
-      const filter = await updatefilter(args)
+    updateFilter: async (_, args) => {
+      const filter = await updateFilter(args)
       return filter
     },
-    deletefilter: async (_, args) => {
-      const filter = await deletefilter(args)
+    deleteFilter: async (_, args) => {
+      const filter = await deleteFilter(args)
       return filter
     },
   },
