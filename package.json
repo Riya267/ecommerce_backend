@@ -11,6 +11,12 @@
     "prepare": "husky install",
     "postinstall": "prisma generate"
   },
+  "husky": {
+    "hooks": {
+        "pre-commit": "lint-staged",
+        "pre-push": "npm test"
+    }
+  },
   "lint-staged": {
     "*.{js,ts,json,md}": [
       "pnpm run lint",

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-echo "Hello, World!"
-pnpm run lint
-pnpm run format
-git add .
