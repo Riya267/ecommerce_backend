@@ -8,21 +8,7 @@
     "build": "tsc",
     "lint": "eslint --fix 'src/**/*.{js,ts,json}'",
     "format": "prettier --write 'src/**/*.{js,ts,json}'",
-    "prepare": "husky install",
     "postinstall": "prisma generate"
-  },
-  "husky": {
-    "hooks": {
-        "pre-commit": "lint-staged",
-        "pre-push": "npm test"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts,json,md}": [
-      "pnpm run lint",
-      "pnpm run format",
-      "git add ."
-    ]
   },
   "type": "module",
   "keywords": [],
