@@ -1,10 +1,18 @@
 type Query {
     getProduct(id: ID!): Product
     getAllProducts(page: Int, limit: Int): [Product]!
+    getCategories(page: Int, limit: Int): [CategoriesOutput]
+    getFilters(page: Int, limit: Int): [FiltersOutput]
 }
 
 type Mutation {
     createProduct(productInfo: ProductInput): Product
     updateProduct(id: ID!, productInfo: ProductInput): Product
-    deleteProduct(id: ID!): Product
+    deleteProduct(id: ID!): Boolean
+    createCategory(categoryInfo: CategoriesInput): CategoriesOutput
+    updateCategory(id: ID!, categoryInfo: CategoriesInput): CategoriesOutput
+    deleteCategory(id: ID!): Boolean
+    createFilter(filterInfo: FiltersInput): FiltersOutput
+    updateFilter(id: ID!, filterInfo: FiltersInput): FiltersOutput
+    deleteFilter(id: ID!): Boolean
 }

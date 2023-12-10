@@ -18,30 +18,30 @@ model products {
   Usage         String
   ProductTitle  String
   ImageURL      String
-  UnitPrice     Float?
+  UnitPrice     Float
 }
 
 model favouriteProducts {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   ProductId     Int
-  Gender        String?
-  Category      String?
-  SubCategory   String?
-  ProductType   String?
-  Colour        String?
-  Usage         String?
-  ProductTitle  String?
-  ImageURL      String?
-  UnitPrice     Float?
+  Gender        String
+  Category      String
+  SubCategory   String
+  ProductType   String
+  Colour        String
+  Usage         String
+  ProductTitle  String
+  ImageURL      String
+  UnitPrice     Float
 }
 
 model categories {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  Category   String?
+  Category   String
 }
 
 model filters {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  Title   String?
-  Values  String?
+  Title   String
+  Values  String
 }

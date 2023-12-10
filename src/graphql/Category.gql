@@ -1,0 +1,8 @@
+type CategoriesOutput {
+  id: String
+  Category: String
+}
+
+input CategoriesInput {
+   Category: String
+}

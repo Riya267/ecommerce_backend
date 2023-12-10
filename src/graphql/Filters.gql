@@ -1,0 +1,10 @@
+type FiltersOutput {
+  id:  String
+  Title:  String
+  Values: String
+}
+
+input FiltersInput {
+  Title: String
+  Values: String
+}
