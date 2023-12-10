@@ -8,5 +8,4 @@ type ProductInfo = {
   Usage: string
   ProductTitle: string
   ImageURL: string
-  UnitPrice: GLfloat
-}
+  UnitPrice: GLfloat}
