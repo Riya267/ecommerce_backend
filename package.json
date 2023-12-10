@@ -9,8 +9,7 @@
     "lint": "eslint --fix 'src/**/*.{js,ts,json}'",
     "format": "prettier --write 'src/**/*.{js,ts,json}'",
     "prepare": "husky install",
-    "postinstall": "prisma generate",
-    "precommit": "lint-staged"
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{js,ts,json,md}": [
