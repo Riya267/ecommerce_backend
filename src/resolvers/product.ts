@@ -95,4 +95,3 @@ export const deleteProduct = async (args: { id: string }) => {
     throw error
   }
 }
-

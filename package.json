@@ -35,7 +35,6 @@
     "eslint-plugin-prettier": "^5.0.1",
     "express": "^4.18.2",
     "graphql": "^15.3.0",
-    "husky": "4",
     "morgan": "^1.10.0",
     "prettier": "^3.1.0",
     "typescript-eslint": "0.0.1-alpha.0",
@@ -48,6 +47,7 @@
     "lint-staged": "^15.1.0",
     "prisma": "^5.7.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "husky": "^8.0.3"
   }
 }
