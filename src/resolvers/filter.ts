@@ -1,5 +1,7 @@
 import logger from '../config/winston'
 import prisma from '../prismaClient'
+import ApiError from '../utils/ApiError'
+import httpStatus from 'http-status'
 
 export const getFilters = async (args: { page: number; limit: number }) => {
   try {
@@ -14,7 +16,11 @@ export const getFilters = async (args: { page: number; limit: number }) => {
     return response
   } catch (error) {
     logger.error('Error in getFilters query:', { error })
-    throw error
+    throw new ApiError(
+      'Error in getFilters query',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -34,7 +40,11 @@ export const createFilter = async (args: {
     return response
   } catch (error) {
     logger.error('Error in createFilters query:', { error })
-    throw error
+    throw new ApiError(
+      'Error in createFilters query',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -62,7 +72,11 @@ export const updateFilter = async (args: {
     return updatedfilter
   } catch (error) {
     logger.error('Error updating filter:', { error })
-    throw error
+    throw new ApiError(
+      'Error updating filter',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -83,6 +97,10 @@ export const deleteFilter = async (args: { id: string }) => {
     return true
   } catch (error) {
     logger.error('Error deleting filter:', { error })
-    throw error
+    throw new ApiError(
+      'Error deleting filter',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }

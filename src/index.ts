@@ -7,6 +7,8 @@ import logger from './config/winston'
 import 'dotenv/config'
 import typeDefs from './schema'
 import resolvers from './resolvers'
+import ApiError from './utils/ApiError'
+import httpStatus from 'http-status'
 
 async function startApolloServer() {
   const app = express()
@@ -19,10 +21,7 @@ async function startApolloServer() {
     },
     cache: 'bounded',
     formatError: (error) => {
-      // Log the error with Winston logger
       logger.error('Apollo Server Error:', error.name)
-
-      // Return a formatted error for the client
       return {
         message: error.message,
         path: error.path,
@@ -52,6 +51,29 @@ async function startApolloServer() {
   app.use(cors(corsOptions))
 
   server.applyMiddleware({ app, cors: corsOptions, path: '/graphql' })
+
+  // send 404 for an unknown api request
+  app.use((req, res, next) => {
+    next(
+      new ApiError(
+        'Not Found',
+        httpStatus.NOT_FOUND,
+        httpStatus[httpStatus.NOT_FOUND],
+      ),
+    )
+  })
+
+  // global error handler
+  app.use((err, req, res, next) => {
+    const { statusCode, message, data } = err
+    const response = {
+      ...data,
+      message,
+      status: statusCode,
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    }
+    res.status(statusCode).json(response)
+  })
 
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: process.env.PORT }, () => resolve()),

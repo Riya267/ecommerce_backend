@@ -1,5 +1,7 @@
 import logger from '../config/winston'
 import prisma from '../prismaClient'
+import ApiError from '../utils/ApiError'
+import httpStatus from 'http-status'
 
 export const getFavProducts = async (args: { page: number; limit: number }) => {
   try {
@@ -14,7 +16,11 @@ export const getFavProducts = async (args: { page: number; limit: number }) => {
     return response
   } catch (error) {
     logger.error('Error in getFavProducts query:', { error })
-    throw error
+    throw new ApiError(
+      'Error in getFavProducts query',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -33,7 +39,11 @@ export const createFavProduct = async (args: {
     return newProduct
   } catch (error) {
     logger.error('Error creating createFavProduct:', { error })
-    throw error
+    throw new ApiError(
+      'Error creating createFavProduct',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -54,6 +64,10 @@ export const deleteFavProduct = async (args: { id: string }) => {
     return true
   } catch (error) {
     logger.error('Error deleting deleteFavProduct:', { error })
-    throw error
+    throw new ApiError(
+      'Error deleting deleteFavProduct',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }

@@ -1,5 +1,7 @@
 import logger from '../config/winston'
 import prisma from '../prismaClient'
+import ApiError from '../utils/ApiError'
+import httpStatus from 'http-status'
 
 export const getCategories = async (args: { page: number; limit: number }) => {
   try {
@@ -14,7 +16,11 @@ export const getCategories = async (args: { page: number; limit: number }) => {
     return response
   } catch (error) {
     logger.error('Error in getCategories query:', { error })
-    throw error
+    throw new ApiError(
+      'Error in getCategories query',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -31,7 +37,11 @@ export const createCategory = async (args: {
     return response
   } catch (error) {
     logger.error('Error in createCategory query:', { error })
-    throw error
+    throw new ApiError(
+      'Error in createCategory query',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -56,7 +66,11 @@ export const updateCategory = async (args: {
     return updatedCategory
   } catch (error) {
     logger.error('Error updating Category:', { error })
-    throw error
+    throw new ApiError(
+      'Error updating Category',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
 
@@ -77,6 +91,10 @@ export const deleteCategory = async (args: { id: string }) => {
     return true
   } catch (error) {
     logger.error('Error deleting Category:', { error })
-    throw error
+    throw new ApiError(
+      'Error deleting Category',
+      httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+    )
   }
 }
