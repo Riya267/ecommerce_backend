@@ -26,3 +26,7 @@ jobs:
       - name: Push Docker image
         run: |
           docker push "${{ secrets.DOCKER_USERNAME }}/ecommbackend:latest"
+      - name: Make POST request to Render API
+        run: |
+          curl -X POST \
+            https://api.render.com/deploy/${{secrets.SECRET_KEY}}?key=${{secrets.API_KEY}}&imgURL=docker.io/${{ secrets.DOCKER_USERNAME }}/ecommbackend:latest
