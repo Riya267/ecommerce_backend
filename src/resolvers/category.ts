@@ -11,7 +11,7 @@ export const getCategories = async (args: { page: number; limit: number }) => {
       skip,
     })
 
-    logger.info('Retrieved all getCategories data:', { response })
+    logger.info('Retrieved all getCategories data')
 
     return response
   } catch (error) {
@@ -32,7 +32,7 @@ export const createCategory = async (args: {
       data: args.categoryInfo,
     })
 
-    logger.info('Retrieved all createCategory data:', { response })
+    logger.info('Retrieved all createCategory data')
 
     return response
   } catch (error) {
@@ -61,7 +61,7 @@ export const updateCategory = async (args: {
       throw new Error(`Category with id ${args.id} not found`)
     }
 
-    logger.info('Category updated successfully', { updatedCategory })
+    logger.info('Category updated successfully')
 
     return updatedCategory
   } catch (error) {
@@ -86,7 +86,7 @@ export const deleteCategory = async (args: { id: string }) => {
       throw new Error(`Category with id ${args.id} not found`)
     }
 
-    logger.info('Category deleted successfully', { deletedCategory })
+    logger.info('Category deleted successfully')
 
     return true
   } catch (error) {

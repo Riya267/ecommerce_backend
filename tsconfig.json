@@ -9,14 +9,18 @@
     "sourceMap": false,
     "outDir": "dist",
     "baseUrl": "src",
+    "types": ["mocha"],
   },
   "baseUrl": "src",
   "include": [
     "src/**/*.ts",
-    "src/**/*.graphql", "deploy.ts",
+    "src/**/*.graphql",
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "test",
+    "_mocks_",
+    ".nyc_output"
   ]
 }

@@ -11,15 +11,17 @@ export const getProduct = async (args: { id: string }) => {
       },
     })
 
-    logger.info('Retrieved product data:', { response })
+    logger.info('Retrieved product data')
 
     return response
   } catch (error) {
     logger.error('Error in getProduct query:', { error })
     throw new ApiError(
       'Error in getProduct query',
-      httpStatus.INTERNAL_SERVER_ERROR,
-      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+      error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[
+        error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR
+      ],
     )
   }
 }
@@ -32,15 +34,17 @@ export const getAllProducts = async (args: { page: number; limit: number }) => {
       skip,
     })
 
-    logger.info('Retrieved all product data:', { response })
+    logger.info('Retrieved all product data:')
 
     return response
   } catch (error) {
     logger.error('Error in getAllProducts query:', { error })
     throw new ApiError(
       'Error in getAllProducts query',
-      httpStatus.INTERNAL_SERVER_ERROR,
-      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+      error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[
+        error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR
+      ],
     )
   }
 }
@@ -51,15 +55,17 @@ export const createProduct = async (args: { productInfo: ProductInfo }) => {
       data: args.productInfo,
     })
 
-    logger.info('New product created successfully', { newProduct })
+    logger.info('New product created successfully')
 
     return newProduct
   } catch (error) {
     logger.error('Error creating product:', { error })
     throw new ApiError(
       'Error creating product',
-      httpStatus.INTERNAL_SERVER_ERROR,
-      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+      error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[
+        error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR
+      ],
     )
   }
 }
@@ -80,15 +86,17 @@ export const updateProduct = async (args: {
       throw new Error(`Product with id ${args.id} not found`)
     }
 
-    logger.info('Product updated successfully', { updatedProduct })
+    logger.info('Product updated successfully')
 
     return updatedProduct
   } catch (error) {
     logger.error('Error updating product:', { error })
     throw new ApiError(
       'Error updating product',
-      httpStatus.INTERNAL_SERVER_ERROR,
-      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+      error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[
+        error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR
+      ],
     )
   }
 }
@@ -105,15 +113,17 @@ export const deleteProduct = async (args: { id: string }) => {
       throw new Error(`Product with id ${args.id} not found`)
     }
 
-    logger.info('Product deleted successfully', { deletedProduct })
+    logger.info('Product deleted successfully')
 
     return true
   } catch (error) {
     logger.error('Error deleting product:', { error })
     throw new ApiError(
-      'Error deleting product',
-      httpStatus.INTERNAL_SERVER_ERROR,
-      httpStatus[httpStatus.INTERNAL_SERVER_ERROR],
+      `Error deleting product`,
+      error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR,
+      httpStatus[
+        error.status ? error.status : httpStatus.INTERNAL_SERVER_ERROR
+      ],
     )
   }
 }

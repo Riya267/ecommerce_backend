@@ -21,17 +21,16 @@ async function startApolloServer() {
     },
     cache: 'bounded',
     formatError: (error) => {
-      logger.error('Apollo Server Error:', error.name)
-      return {
-        message: error.message,
-        path: error.path,
-        extensions: {
-          code: error.extensions?.code || 'INTERNAL_SERVER_ERROR',
-          exception: {
-            stacktrace: error.extensions?.exception?.stacktrace,
-          },
-        },
+      const statusCode = error.extensions?.exception?.statusCode || 500
+      const message = error.message || 'Internal Server Error'
+      const response = {
+        message,
+        status: statusCode,
+        ...(process.env.NODE_ENV === 'development' && {
+          stack: error.extensions?.exception?.stacktrace,
+        }),
       }
+      return response
     },
   })
 
@@ -65,6 +64,7 @@ async function startApolloServer() {
 
   // global error handler
   app.use((err, req, res, next) => {
+    console.log('called global error handler')
     const { statusCode, message, data } = err
     const response = {
       ...data,
