@@ -11,7 +11,7 @@ export const getFilters = async (args: { page: number; limit: number }) => {
       skip,
     })
 
-    logger.info('Retrieved all filters data:', { response })
+    logger.info('Retrieved all filters data:')
 
     return response
   } catch (error) {
@@ -35,7 +35,7 @@ export const createFilter = async (args: {
       data: args.filterInfo,
     })
 
-    logger.info('Retrieved all createFilters data:', { response })
+    logger.info('Retrieved all createFilters data')
 
     return response
   } catch (error) {
@@ -67,7 +67,7 @@ export const updateFilter = async (args: {
       throw new Error(`filter with id ${args.id} not found`)
     }
 
-    logger.info('filter updated successfully', { updatedfilter })
+    logger.info('filter updated successfully')
 
     return updatedfilter
   } catch (error) {
@@ -92,7 +92,7 @@ export const deleteFilter = async (args: { id: string }) => {
       throw new Error(`filter with id ${args.id} not found`)
     }
 
-    logger.info('filter deleted successfully', { deletedfilter })
+    logger.info('filter deleted successfully')
 
     return true
   } catch (error) {

@@ -11,7 +11,7 @@ export const getFavProducts = async (args: { page: number; limit: number }) => {
       skip,
     })
 
-    logger.info('Retrieved all Favourite Products data:', { response })
+    logger.info('Retrieved all Favourite Products data:')
 
     return response
   } catch (error) {
@@ -32,9 +32,7 @@ export const createFavProduct = async (args: {
       data: args.favProductInfo,
     })
 
-    logger.info('New product added in Favourite Products successfully', {
-      newProduct,
-    })
+    logger.info('New product added in Favourite Products successfully')
 
     return newProduct
   } catch (error) {
@@ -59,7 +57,7 @@ export const deleteFavProduct = async (args: { id: string }) => {
       throw new Error(`Product with id ${args.id} not found`)
     }
 
-    logger.info('Favourite Product deleted successfully', { deletedProduct })
+    logger.info('Favourite Product deleted successfully')
 
     return true
   } catch (error) {

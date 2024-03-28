@@ -1,0 +1,28 @@
+[
+  {
+    "id": "6573525c281667bf58d4d804",
+    "ProductId": 12345,
+    "Gender": "Girls",
+    "Category": "Apparel",
+    "SubCategory": "Topwear",
+    "ProductType": "Tops",
+    "Colour": "Pink",
+    "Usage": "Casual",
+    "ProductTitle": "Dummy Girls Pink Top",
+    "ImageURL": "http://example.com/image1.jpg",
+    "UnitPrice": 15
+  },
+  {
+    "id": "6573525c281667bf58d4d805",
+    "ProductId": 67890,
+    "Gender": "Boys",
+    "Category": "Apparel",
+    "SubCategory": "Bottomwear",
+    "ProductType": "Jeans",
+    "Colour": "Blue",
+    "Usage": "Casual",
+    "ProductTitle": "Dummy Boys Blue Jeans",
+    "ImageURL": "http://example.com/image2.jpg",
+    "UnitPrice": 20
+  }
+]

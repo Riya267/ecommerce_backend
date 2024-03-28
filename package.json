@@ -8,7 +8,8 @@
     "lint": "eslint --fix 'src/**/*.{js,ts,json}'",
     "format": "prettier --write 'src/**/*.{js,ts,json}'",
     "postinstall": "prisma generate",
-    "start": "pnpm run build && node dist/index.js"
+    "start": "pnpm run build && node dist/index.js",
+    "test": "nyc --reporter=text mocha"
   },
   "type": "commonjs",
   "keywords": [
@@ -36,18 +37,25 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.7.0",
     "nodemon": "^3.1.0",
+    "nyc": "^15.1.0",
     "prettier": "^3.1.0",
+    "sinon": "^17.0.1",
+    "tsx": "^4.7.1",
     "typescript-eslint": "0.0.1-alpha.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
     "@types/node": "^18.15.5",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
+    "chai": "^5.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
+    "mocha": "^10.3.0",
     "prisma": "^5.7.0",
-    "ts-node": "^10.9.1",
+    "ts-mocha": "^10.0.0",
     "typescript": "^5.0.2"
   }
 }
